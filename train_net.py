@@ -442,6 +442,12 @@ def setup(args):
     add_maskdino_config(cfg)
     cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
+    
+    # Override OUTPUT_DIR if specified in args
+    if args.OUTPUT_DIR is not None:
+        cfg.OUTPUT_DIR = args.OUTPUT_DIR
+        print(f"Overriding output directory to: {cfg.OUTPUT_DIR}")
+        
     cfg.freeze()
     default_setup(cfg, args)
     setup_logger(
@@ -476,6 +482,7 @@ if __name__ == "__main__":
     parser = default_argument_parser()
     parser.add_argument("--eval_only", action="store_true")
     parser.add_argument("--EVAL_FLAG", type=int, default=1)
+    parser.add_argument("--OUTPUT_DIR", type=str, default=None, help="Override output directory")
     args = parser.parse_args()
     # random port
     port = random.randint(1000, 20000)

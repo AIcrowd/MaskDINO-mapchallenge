@@ -54,3 +54,7 @@ _darcs
 
 
 detectron2/
+
+
+logs/
+run_slurm.sh
