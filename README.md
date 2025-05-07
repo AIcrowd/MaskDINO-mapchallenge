@@ -9,13 +9,23 @@ See [installation instructions](INSTALL.md).
 Download the pretrained model:
 [maskdino_swinl_50ep_300q_hid2048_3sd1_instance_maskenhanced_mask52.3ap_box59.0ap.pth](https://github.com/IDEA-Research/detrex-storage/releases/download/maskdino-v0.1.0/maskdino_swinl_50ep_300q_hid2048_3sd1_instance_maskenhanced_mask52.3ap_box59.0ap.pth)
 
-## Training Command
+## Training 
 ```sh
 python train_net.py \
      --num-gpus 2 \
      --config-file configs/coco/instance-segmentation/swin/maskdino_R50_bs16_50ep_4s_dowsample1_2048.yaml \
      MODEL.WEIGHTS maskdino_swinl_50ep_300q_hid2048_3sd1_instance_maskenhanced_mask52.3ap_box59.0ap.pth
 ```
+## Evaluation
+```sh
+python train_net.py \
+     --eval-only \
+     --num-gpus 2 \
+     --config-file configs/coco/instance-segmentation/swin/maskdino_R50_bs16_50ep_4s_dowsample1_2048.yaml \
+     DATASETS.TEST '("satellite_test",)' \
+     MODEL.WEIGHTS MODEL_CHECKPOINT_PATH
+```
+
 
 ## MapChallenge Instance Segmentation Results
 

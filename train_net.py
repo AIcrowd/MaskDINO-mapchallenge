@@ -36,7 +36,6 @@ from detectron2.data import MetadataCatalog, build_detection_train_loader
 from detectron2.evaluation import (
     CityscapesInstanceEvaluator,
     CityscapesSemSegEvaluator,
-    COCOEvaluator,
     COCOPanopticEvaluator,
     DatasetEvaluators,
     LVISEvaluator,
@@ -74,7 +73,8 @@ import json
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.structures import BoxMode
 from pycocotools import mask as maskUtils
-
+# custom COCO
+from coco_evaluator import COCOEvaluator
 
 def get_building_dicts(root_dir):
     img_dir, ann_dir = os.path.join(root_dir, "images"), os.path.join(
