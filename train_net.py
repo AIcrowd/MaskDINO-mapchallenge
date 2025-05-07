@@ -80,7 +80,7 @@ def get_building_dicts(root_dir):
     img_dir, ann_dir = os.path.join(root_dir, "images"), os.path.join(
         root_dir, "annotations"
     )
-    json_file = os.path.join(ann_dir, "annotation.json")
+    json_file = os.path.join(ann_dir, "annotation_non_augmented.json")
     with open(json_file) as f:
         imgs_anns = json.load(f)
 
@@ -123,7 +123,7 @@ def get_building_dicts(root_dir):
 ## Prepare Data and Metadata catalogues
 for split in ["train", "val", "test"]:
     root_dir = os.path.join(
-        "/scratch/mohanty/mapping-challenge-data/processed/final-corrected-v2",
+        "/scratch/mohanty/mapping-challenge-data/processed/mapping-challenge-v2.0",
         split
     )
     DatasetCatalog.register(
